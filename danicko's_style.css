@@ -1,0 +1,27 @@
+@charset "UTF-8";
+@font-face {
+  
+  font-family: 'BentonModDisp-Regular';
+  src:("BentonModDisp-Regular.otf");
+}
+
+body
+{
+	min-height: 100%;
+	min-width: 100%;
+}
+ 
+ h1
+{
+	font-family: 'BentonModDisp-Regular';
+	font-size: 45pt;
+	color: pink;
+	
+	
+}
+
+a
+{
+	text-decoration: none;
+
+}
