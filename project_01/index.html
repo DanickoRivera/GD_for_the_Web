@@ -1,0 +1,582 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>The life and times of knowing the time</title>
+<link href="css/clock_style.css" rel="stylesheet" type="text/css" sc>
+
+<!---image-clock-->
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('#scroll-1').click(function() {
+    $('html,body').animate({
+        scrollLeft: $('#arrive-1').css('left')
+    }, 2500, function() {
+
+      
+
+    });
+});
+});
+</script>	
+	
+	<script>
+$(document).ready(function(){
+    $('#scroll-2').click(function() {
+    $('html,body').animate({
+        scrollLeft: $('#arrive-2').css('left')
+    }, 2000, function() {
+
+        
+
+    });
+});
+});
+</script>
+	
+	<script>
+$(document).ready(function(){
+    $('#scroll-3').click(function() {
+    $('html,body').animate({
+        scrollLeft: $('#arrive-3').css('left')
+    }, 2000, function() {
+
+    });
+});
+});
+</script>
+	
+	<script>
+$(document).ready(function(){
+    $('#scroll-4').click(function() {
+    $('html,body').animate({
+        scrollLeft: $('#arrive-4-at-start').css('left')
+    }, 8000, function() {
+
+    });
+});
+});
+</script>
+
+	<script>
+$(document).ready(function(){
+    $('#scroll-restart').click(function() {
+    $('html,body').animate({
+        scrollLeft: $('#arrive-5-at-start').css('left')
+    }, 1000, function() {
+
+    });
+});
+});
+</script>
+	
+<script type="text/javascript">
+/***********************************************
+
+* JavaScript Image Clock- by JavaScript Kit (www.javascriptkit.com)
+* This notice must stay intact for usage
+* Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and 100s more
+
+***********************************************/
+
+var imageclock=new Object(imageclock)
+	//Enter path to clock digit images here, in order of 0-9, then "am/pm", then colon image:
+	imageclock.digits=["c0.gif", "c1.gif", "c2.gif", "c3.gif", "c4.gif", "c5.gif", "c6.gif", "c7.gif", "c8.gif", "c9.gif", "cam.gif", "cpm.gif", "colon.gif"]
+	imageclock.instances=0
+	var preloadimages=[]
+	for (var i=0; i<imageclock.digits.length; i++){ //preload images
+		preloadimages[i]=new Image()
+		preloadimages[i].src=imageclock.digits[i]
+	}
+
+	imageclock.imageHTML=function(timestring){ //return timestring (ie: 1:56:38) into string of images instead
+		var sections=timestring.split(":")
+		if (sections[0]=="0") //If hour field is 0 (aka 12 AM)
+			sections[0]="12"
+		else if (sections[0]>=13)
+			sections[0]=sections[0]-12+""
+		for (var i=0; i<sections.length; i++){
+			if (sections[i].length==1)
+				sections[i]='<img src="'+imageclock.digits[0]+'" />'+'<img src="'+imageclock.digits[parseInt(sections[i])]+'" />'
+			else
+				sections[i]='<img src="'+imageclock.digits[parseInt(sections[i].charAt(0))]+'" />'+'<img src="'+imageclock.digits[parseInt(sections[i].charAt(1))]+'" />'
+		}
+		return sections[0]+'<img src="'+imageclock.digits[12]+'" />'+sections[1]+'<img src="'+imageclock.digits[12]+'" />'+sections[2]
+	}
+
+	imageclock.display=function(){
+		var clockinstance=this
+		this.spanid="clockspan"+(imageclock.instances++)
+		document.write('<span id="'+this.spanid+'"></span>')
+		this.update()
+		setInterval(function(){clockinstance.update()}, 1000)
+	}
+
+	imageclock.display.prototype.update=function(){
+		var dateobj=new Date()
+		var currenttime=dateobj.getHours()+":"+dateobj.getMinutes()+":"+dateobj.getSeconds() //create time string
+		var currenttimeHTML=imageclock.imageHTML(currenttime)+'<img src="'+((dateobj.getHours()>=12)? imageclock.digits[11] : imageclock.digits[10])+'" />'
+		document.getElementById(this.spanid).innerHTML=currenttimeHTML
+
+	}
+
+
+</script>
+<!--end of image-clock-->
+
+<script>
+	  var min    = 0;
+      var second = 00;
+      var zeroPlaceholder = 0;
+      var counterId = setInterval(function(){
+                        countUp();
+                      }, 1000);
+
+      function countUp () {
+          second++;
+          if(second == 59){
+            second = 00;
+            min = min + 1;
+          }
+          if(second == 10){
+              zeroPlaceholder = '';
+          }else
+          if(second == 00){
+              zeroPlaceholder = 0;
+          }
+
+          document.getElementById("count-up").innerText = min+':'+zeroPlaceholder+second;
+      }
+</script>
+<!--ANALOG CLOCK 1-->
+<script>
+    window.onload = function () {
+        setInterval(showClock, 1000);
+
+        function showClock() {
+
+            // DEFINE CANVAS AND ITS CONTEXT.
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+
+            var date = new Date;
+            var angle;
+            var secHandLength = 60;
+
+            // CLEAR EVERYTHING ON THE CANVAS. RE-DRAW NEW ELEMENTS EVERY SECOND.
+            ctx.clearRect(0, 0, canvas.width, canvas.height);        
+
+            OUTER_DIAL1();
+            OUTER_DIAL2();
+            CENTER_DIAL();
+            MARK_THE_HOURS();
+            MARK_THE_SECONDS();
+
+            SHOW_SECONDS();
+            SHOW_MINUTES();
+            SHOW_HOURS();
+
+            function OUTER_DIAL1() {
+                ctx.beginPath();
+                ctx.arc(canvas.width / 2, canvas.height / 2, secHandLength + 10, 0, Math.PI * 2);
+                ctx.strokeStyle = '#92949C';
+                ctx.stroke();
+            }
+            function OUTER_DIAL2() {
+                ctx.beginPath();
+                ctx.arc(canvas.width / 2, canvas.height / 2, secHandLength + 7, 0, Math.PI * 2);
+                ctx.strokeStyle = '#929BAC';
+                ctx.stroke();
+            }
+            function CENTER_DIAL() {
+                ctx.beginPath();
+                ctx.arc(canvas.width / 2, canvas.height / 2, 2, 0, Math.PI * 2);
+                ctx.lineWidth = 3;
+                ctx.fillStyle = '#353535';
+                ctx.strokeStyle = '#0C3D4A';
+                ctx.stroke();
+            }
+
+            function MARK_THE_HOURS() {
+
+                for (var i = 0; i < 12; i++) {
+                    angle = (i - 3) * (Math.PI * 2) / 12;       // THE ANGLE TO MARK.
+                    ctx.lineWidth = 1;            // HAND WIDTH.
+                    ctx.beginPath();
+
+                    var x1 = (canvas.width / 2) + Math.cos(angle) * (secHandLength);
+                    var y1 = (canvas.height / 2) + Math.sin(angle) * (secHandLength);
+                    var x2 = (canvas.width / 2) + Math.cos(angle) * (secHandLength - (secHandLength / 7));
+                    var y2 = (canvas.height / 2) + Math.sin(angle) * (secHandLength - (secHandLength / 7));
+
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x2, y2);
+
+                    ctx.strokeStyle = '#466B76';
+                    ctx.stroke();
+                }
+            }
+
+            function MARK_THE_SECONDS() {
+
+                for (var i = 0; i < 60; i++) {
+                    angle = (i - 3) * (Math.PI * 2) / 60;       // THE ANGLE TO MARK.
+                    ctx.lineWidth = 1;            // HAND WIDTH.
+                    ctx.beginPath();
+
+                    var x1 = (canvas.width / 2) + Math.cos(angle) * (secHandLength);
+                    var y1 = (canvas.height / 2) + Math.sin(angle) * (secHandLength);
+                    var x2 = (canvas.width / 2) + Math.cos(angle) * (secHandLength - (secHandLength / 30));
+                    var y2 = (canvas.height / 2) + Math.sin(angle) * (secHandLength - (secHandLength / 30));
+
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x2, y2);
+
+                    ctx.strokeStyle = '#C4D1D5';
+                    ctx.stroke();
+                }
+            }
+
+            function SHOW_SECONDS() {
+
+                var sec = date.getSeconds();
+                angle = ((Math.PI * 2) * (sec / 60)) - ((Math.PI * 2) / 4);
+                ctx.lineWidth = 0.5;              // HAND WIDTH.
+
+                ctx.beginPath();
+                // START FROM CENTER OF THE CLOCK.
+                ctx.moveTo(canvas.width / 2, canvas.height / 2);   
+                // DRAW THE LENGTH.
+                ctx.lineTo((canvas.width / 2 + Math.cos(angle) * secHandLength),
+                    canvas.height / 2 + Math.sin(angle) * secHandLength);
+
+                // DRAW THE TAIL OF THE SECONDS HAND.
+                ctx.moveTo(canvas.width / 2, canvas.height / 2);    // START FROM CENTER.
+                // DRAW THE LENGTH.
+                ctx.lineTo((canvas.width / 2 - Math.cos(angle) * 20),
+                    canvas.height / 2 - Math.sin(angle) * 20);
+
+                ctx.strokeStyle = '#586A73';        // COLOR OF THE HAND.
+                ctx.stroke();
+            }
+
+            function SHOW_MINUTES() {
+
+                var min = date.getMinutes();
+                angle = ((Math.PI * 2) * (min / 60)) - ((Math.PI * 2) / 4);
+                ctx.lineWidth = 1.5;              // HAND WIDTH.
+
+                ctx.beginPath();
+                ctx.moveTo(canvas.width / 2, canvas.height / 2);  // START FROM CENTER.
+                // DRAW THE LENGTH.
+                ctx.lineTo((canvas.width / 2 + Math.cos(angle) * secHandLength / 1.1),      
+                    canvas.height / 2 + Math.sin(angle) * secHandLength / 1.1);
+
+                ctx.strokeStyle = '#999';  // COLOR OF THE HAND.
+                ctx.stroke();
+            }
+
+            function SHOW_HOURS() {
+
+                var hour = date.getHours();
+                var min = date.getMinutes();
+                angle = ((Math.PI * 2) * ((hour * 5 + (min / 60) * 5) / 60)) - ((Math.PI * 2) / 4);
+                ctx.lineWidth = 1.5;              // HAND WIDTH.
+
+                ctx.beginPath();
+                ctx.moveTo(canvas.width / 2, canvas.height / 2);     // START FROM CENTER.
+                // DRAW THE LENGTH.
+                ctx.lineTo((canvas.width / 2 + Math.cos(angle) * secHandLength / 1.5),      
+                    canvas.height / 2 + Math.sin(angle) * secHandLength / 1.5);
+
+                ctx.strokeStyle = '#000';   // COLOR OF THE HAND.
+                ctx.stroke();
+            }
+        }
+    }
+</script>
+<!--ANALOG CLOCK 1 END-->
+
+<!----digital-clock2---->	
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('digital_clock2').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+<!----digital-clock2 end---->	
+	
+</head>
+
+
+	
+
+<body onload="startTime()">
+
+
+<audio autoplay loop>
+  <source src="ticking-clock-sound.mp3" type="audio/mp3">
+Your browser does not support the audio element.
+</audio>
+    
+
+	
+<header>
+
+<div id="image_clock"> <script type="text/javascript">new imageclock.display()</script>
+   </div>
+
+</header>
+
+<nav></nav>
+	
+	
+<section>
+	
+	
+	
+<!--SMOOTH SCROLL BEGGING---->
+<button id="scroll-1">IT'S TIME</button>
+	
+<button id="scroll-2">Fun fact</button>
+	
+<button id="scroll-4"></button>
+	
+<button id="scroll-restart"></button>
+	
+
+
+<div id="arrive-1"></div>
+	
+<div id="arrive-2"></div>
+	
+<div id="arrive-3"></div>
+	
+<div id="arrive-4-at-start"></div>
+	
+<div id="arrive-5-at-start"></div>
+	
+<img id="title" src="images/title-img.png" width="600" height="400" alt=""/> 	
+	
+<img src="images/transparent-analog.gif" style="position: absolute; top: 57%; left: 3400px;" width="90" height="90" alt=""/> 
+	
+	
+<img src="images/blue-analog.gif" style="position: absolute; top: 11%; left: 3650px;" width="155" height="155" alt=""/> 
+	
+<img  src="images/Ticking-clock.gif" style="position: absolute; top: 30%; left: 3900px;" width="150" height="158" alt=""/> 
+	
+<h1 style="position: absolute; top: 15%; left: 1300px; display: block; width: 400px;">What is the first thing you usually check when you wake up?</h1>
+
+<h2 style="position: absolute; top: 5%; left: 1750px; display: block; width: 400px; font-size: 12px;">SUBTLE HINT ^</h2>
+	
+<img src="images/alarm_smack.gif" style="position: absolute; top: 30%; left: 1450px;" width="500" height="280" alt=""/>
+	
+<h1 style="position: absolute; top: 65%; left: 2000px; display: block; width: 400px;">Go on, while you think about it... </h1>
+<!--ANALOG CLOCK 1--> 
+<canvas style="position: absolute; top: 15%; left: 4500px;" id="canvas" width="400" height="400">
+</canvas>
+	
+
+
+<img style="position: absolute; top: 12%; left: 4300px;" src="images/analog1.gif" width="75" height="71" alt=""/>
+	
+<img style="position: absolute; top: 65%; left: 4400px;" src="images/animated_clock.gif" width="100" height="100" alt=""/>
+	
+<img style="position: absolute; top: 25%; left: 4100px; z-index: -100000;" src="images/broken-clock.gif" width="333" height="333" alt=""/>
+	
+<img style="position: absolute; top: 12%; left: 5220px;" src="images/moving-clock-digital1.gif" width="280" height="280" alt=""/>
+	
+<img style="position: absolute; top: 10%; left: 4750px; z-index: -1000;" src="images/roman-analog.gif" width="400" height="250" alt=""/>
+<!--ANALOG CLOCK 1 END-->
+	
+
+<h1 style="position: absolute; top: 15%; left: 4400px;">It seems we have stumbled upon some outdated instruments...</h1>
+
+<p style="position: absolute; top: 25%; left: 4500px;">I wonder why they're here? Those old things definitely do not have a place in our culture of immediacy.</p>
+
+<p style="position: absolute; top: 50%; left: 4500px;">No self respecting modern human has the time to interpret whatever they're trying to communicate.</p>
+
+<p style="position: absolute; top: 55%; left: 5000px;">Ugh!!! Those things insult me as a millenial.</p>
+
+<h1 style="position: absolute; top: 60%; left: 5300px; display: block; width: 350px;">Let's just keep moving and pretend we didn't see that.</h1>
+ 
+<h1 style="position: absolute; top: 1%; left: 14750px; display: block; width: 200px; ">Oh look! Some spicy memes.</h1>
+	
+<h1 style="position: absolute; top: 60%; left: 16100px; display: block; width: 300px; ">We all enjoy investing our time on these. *giggles*</h1>
+
+<img style="position: absolute; top: 1%; left: 15000px;" src="images/meme1.jpg" width="1068" height="600" alt=""/> 
+	
+<img style="position: absolute; top: 1%; left: 16500px;" src="images/meme2.jpg" width="500" height="333" alt=""/> 
+	
+<img style="position: absolute; top: 30%; left: 17200px;" src="images/meme3.jpg" width="300" height="300" alt=""/>
+	
+<img style="position: absolute; top: 5%; left: 17700px;" src="images/meme4.jpg" width="300" height="294" alt=""/> 
+	
+<h1 style="position: absolute; top: 50%; left: 17700px; display: block; width: 370px; letter-spacing: 1px">Ok ok, your right Filthy Frank. That's enough memes for now.</h1>
+	
+<h1 style="position: absolute; top: 50%; left: 28700px; display: block; width: 370px; letter-spacing: 1px">Wow! It's pretty fucking empty over here.</h1>
+	
+<h1 style="position: absolute; top: 10%; left: 38700px; display: block; width: 370px; letter-spacing: 1px">I bet we all have felt that way.</h1>
+	
+<h2 style="position: absolute; top: 10%; left: 44700px; display: block; width: 370px; letter-spacing: 1px">how?</h2>
+	
+<h1 style="position: absolute; top:-50% ; left: 49700px; display: block; width: 370px; font-size: 500px; color: white; letter-spacing: 1px">EMPTY</h1>
+	
+<h1 style="position: absolute; top: 30% ; left: 52700px; display: block; width: 370px letter-spacing: 1px">But thats ok, you will forget when it's time to go.</h1>
+	
+<h1 style="position: absolute; top: 20%; left: 579000px; color: white; letter-spacing: 1px">WHOA... That went by quick!</h1>	
+
+<h1 style="position: absolute; top: 20%; left: 585000px; color: white; letter-spacing: 1px">FUCK!!! ok.. just relax and try to enjoy what is left.</h1>	
+	
+<h1 style="position: absolute; top: 20%; left: 587000px; color: white; display: block; width: 450px; line-height: 35px; letter-spacing: 1px;">Oh great... Some art work up ahead. This might help distract us.</h1>	
+	
+<h1 style="position: absolute; top: 20%; left: 589900px; color: white; font-size: 35px;">Fuck!!! You cant be serious!</h1>
+	
+<img style="position: absolute; top: 10% ; left:  589500px;" src="images/dali.jpeg" width="266" height="189" alt=""/>
+<div style="width: 266px; height: 189px; background-color: white; position: absolute; top: 11%; left: 589510px; z-index: -1;"></div>	
+<span style="position: absolute; top: 40%; left: 589500px; color: white; display: block; width: 200px">
+The Persistence of Memory. Painting by Salvador Dali</span>
+	
+<img style="position: absolute; top: 50%; left:  590000px;" src="images/diego-rivera-paint.jpeg" width="251" height="201" alt=""/>
+<div style="width: 251px; height: 201px; background-color: white; position: absolute; top: 51%; left: 589995px; z-index: -1;"></div>
+	
+<span style="position: absolute; top: 45%; left: 590000px; color: white; display: block; width: 300px">El Reloj De Alarma. Diego Rivera 
+</span>
+	
+<img style="position: absolute; top: 6%; left: 590510px;" src="images/balla-giacomo-01.jpg" width="800" height="673" alt=""/>
+
+<div style="width: 800px; height: 673px; background-color: white; position: absolute; top: 5%; left: 590500px; z-index: -1;"></div>
+	
+<span style="position: absolute; top: 1%; left: 590500px; color: white; display: block; width: 800px">Dynamism of a Dog on a Leash. Giacomo Balla</span>
+	
+
+	
+<img style="position: absolute; top: 10%; left:  591500px;" src="images/duchamp.jpg" width="273" height="455" alt=""/>
+
+<div style="width: 273px; height: 455px; background-color: white; position: absolute; top: 11%; left: 591510px; z-index: -1;"></div>	
+	
+<span style="position: absolute; top: 5%; left: 591500px; color: white; display: block; width: 400px">Marcel Duchamp. Nude Descending the Staircase</span>
+	
+<img style="position: absolute; top: 1%; left:  592000px;" src="images/art-7.jpg" width="607" height="800" alt=""/>
+<div style="width: 607px; height: 800px; background-color: white; position: absolute; top: 3%; left: 591990px; z-index: -1;"></div>	
+
+<span style="position: absolute; top:65%; left: 592620px; color: white; display: block; width: 100px">Art Jurisson. Time Frozen</span>
+	
+<img style="position: absolute; top: 10%; left:  592800px;" src="images/futurists-1.jpg" width="510" height="369" alt=""/>
+
+<div style="width: 510px; height: 369px; background-color: white; position: absolute; top: 11%; left: 592810px; z-index: -1;"></div>	
+	
+<span style="position: absolute; top: 5%; left: 592800px; color: white; display: block; width: 300px">Speed of a Motorcycle. Giacomo Balla</span>
+	
+<img style="position: absolute; top: 30%; left:  593500px;" src="images/icepeople.jpg" width="560" height="337" alt=""/>
+
+<div style="width: 560px; height: 337px; background-color: white; position: absolute; top: 31%; left: 593490px; z-index: -1;"></div>	
+
+<span style="position: absolute; top: 26%; left: 593500px; color: white; display: block; width: 300px">Néle Azevedo. Melting Men</span>
+
+	
+<img style="position: absolute; top: 10%; left:  594200px;" src="images/New-paradox-of-time.jpg" width="672" height="400" alt=""/>
+<div style="width: 672px; height: 400px; background-color: white; position: absolute; top: 11%; left: 594210px; z-index: -1;"></div>	
+	
+<span style="position: absolute; top: 62%; left: 594200px; color: white; display: block; width: 300px">Arman.</span>
+	
+<img style="position: absolute; top: 20%; left:  595050px;" src="images/backFLop.jpg" width="250" height="318" alt=""/> 
+<div style="width: 250px; height: 318px; background-color: white; position: absolute; top: 19%; left: 595060px; z-index: -1;"></div>	
+	
+<span style="position: absolute; top: 62%; left: 595050px; color: white; display: block; width: 300px">Alex Florez. Back Flop</span>
+
+<img style="position: absolute; top: 5%; left:  595500px;" src="images/paint-3.jpg" width="1000" height="497" alt=""/>
+<div style="width: 1000px; height: 497px; background-color: white; position: absolute; top: 7%; left: 595510px; z-index: -1;"></div>
+	
+<span style="position: absolute; top: 1%; left: 595500px; color: white; display: block; width: 300px">Arman. Alarm Clocks (Reveils)</span>
+	
+<h1 style="position: absolute; top: 20%; left: 600000px; color: white; letter-spacing: 1px">That wasn't as bad as expected. It even felt refreshing to appreciate a different perspective regarding the time.</h1>
+	
+
+<p style="position: absolute; top: 35%; left: 628000px; color: white; font-size: 30px; letter-spacing: 3px;">Clocks… Between the C and the S, what we find? A lock. hmmm,,,
+Locked in, locked on, locked tight.
+good night if the time’s right.
+This monster clock that rules us is diversion from the point.
+Time won’t be divided up as easy as we think.
+We can chop it into micro bits till chopping is extinct.
+But evading that tiny spot that’s now, this moment all by it’s self…
+that’s insanity!
+Everything is happening at the same time. No beginning, no end.
+No before, no after.
+You got a clock? don’t trust it. It’ll eat your very soul.
+Oh, it’ll work hard on your body, work hard on your mind,
+don’t use such inventions.
+They’re ruining our kind.
+Just give me a sun rise, some stars to enlight.
+And stop all this ticking all through the night.
+It ain’t real. I’m telling you. don’t lock yourself in, or lock yourself out.
+The present will find you, don’t worry ‘bout that.
+It’s best yet to find it first before the rush. The deathbed conversion that
+comes at the end, That’s when your clock does it’s thing to your head...”clunk”.
+	
+<span style="font-size: 12px;">poem by PAUL WOOD</span></p>
+	
+
+<p style="position: absolute; top: 35%; left: 645500px; color: white; font-size: 30px; letter-spacing: 3px;">“Don’t count every hour in the day, 
+make every hour in the day count.”<span style="font-size: 12px;">Anoymous</span></p>	
+
+<p style="position: absolute; top: 35%; left: 648500px; color: white; font-size: 30px; letter-spacing: 3px;">"TIME....
+is the most valuable coin in your life.  
+You and you alone will determine 
+how that coin will be spent.  
+Be careful that you do not let other people 
+spend it for you."<span style="font-size: 12px;">by. Carl Sandburg</span></p>
+	
+<p style="position: absolute; top: 35%; left: 659500px; color: white; font-size: 30px; letter-spacing: 3px;">“Time is free, but it's priceless. 
+You can't own it, but you can use it. 
+You can't keep it, but you can spend it. 
+Once you've lost it you can never get it back.”
+<span style="font-size: 12px;">by. Harvey MacKay</span></p>	
+	
+	
+	
+<span id="count-up">0:00</span>
+	
+
+
+<h1 style="position: absolute; top: 55%; left: 1830365px; display: block; width: 350px; color: white; line-height: 35px; letter-spacing: 1px;">This is how much time you have just wasted on this stupid webpage.</h1>
+	
+<h1 style="position: absolute; top: 25%; left: 1831900px; display: block; width: 500px; color: white;">Go on there is much more to waste...</h1>
+	
+
+<h1 style="position: absolute; top: 35%; left: 1849000px; color: white; font-size: 72px; font-family: sans-serif;">Tick-tock, click-clock, the clock counts down, on we hurry, off we <button id="scroll-3">scurry.</button></h1>
+	
+
+	
+	
+	
+
+<div id="digital_clock2"></div>
+	
+
+	
+<img style="position: absolute; left: 5000000px; top: 15%" src="images/title-img2.png" width="600" height="400" alt=""/>
+</section>
+	
+
+</body>
+
+
+
+
+
+</html> 

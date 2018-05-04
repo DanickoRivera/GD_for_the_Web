@@ -1,0 +1,227 @@
+@charset "UTF-8";
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+@font-face
+{
+   font-family: 'Futura-Light';
+   src: url(fonts/'Futura-Light.ttf');
+   src: url('');
+}
+
+
+html,body
+{
+	min-height: 100%;
+	min-width: 100%;
+	margin: auto;
+ overflow-y: hidden; 
+}
+
+
+
+header
+{
+	width: 1280px;
+	height: 100px;
+	min-height: 100px;
+	margin: 10px;
+	padding: 5px;
+	position: fixed;
+	background-color: white;
+}
+
+section
+{
+	height: 100%;
+	min-height: 100%;
+	width: 5000000px;
+	position: absolute;
+	top: 170px;
+	background: linear-gradient(to right, white , black, white, black, white, black, white,black, white);
+	z-index: -1000;
+}
+
+nav
+{
+     
+}
+
+div#image_clock
+{
+  position: absolute;
+	top: 30px;
+	left: 20%;
+
+}
+
+#title
+{
+	position: absolute;
+	top: 15%;
+	left: 40px;
+}
+
+h1
+{
+	font-family: sans-serif;
+	font-size: 24px;
+}
+
+h2
+{
+	font-size: 20px;
+	font-family: sans-serif;
+}
+
+p
+{
+	font-size: 18px; 
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+}
+ 
+#count-up
+{
+	position: absolute;
+	left: 1830000px;
+	top: 20%;
+	color: white;
+	font-size: 250px;
+	font-family: sans-serif;
+	letter-spacing: 40pt;
+}
+
+#digital_clock2
+{
+	position: absolute;
+	top: 300px;
+	left: 15500px;
+	font-size: 36px;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+}
+
+
+button
+{
+	-webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+
+#scroll-1
+{
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	font-size: 225px;
+	position: absolute;
+	top: 20%;
+	left: 59700px;
+	background-color: transparent;
+	border-style: hidden;
+	cursor: pointer;
+	
+}
+
+#arrive-1
+{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 578500px;	
+}
+#scroll-2
+{
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	font-size: 225px;
+	color: white;
+	position: absolute;
+	left: 689000px;
+	top: 20%;
+	background-color: transparent;
+	cursor: pointer;  
+    border-style: hidden;
+}
+
+#arrive-2 {
+    width: 10px;
+    height: 10px;
+    background: black;
+    position: relative;
+    left: 1829700px;
+}
+
+#scroll-3
+{
+	background-color: transparent; 
+	color: red; 
+	text-decoration: none; 
+	display: inline-block; 
+	font-size: 72px; 
+	border-style: hidden; 
+	font-family: sans-serif;
+	cursor: pointer;
+}
+
+#arrive-3
+{
+	width: 10px;
+    height: 10px;
+    background: trasnparent;
+    position: relative;
+    left: 5000000px;
+	
+}
+
+#scroll-4
+{
+	width: 600px;
+	height: 400px;
+	top: 15%;
+	background-color: transparent; 
+	color: black; 
+	text-decoration: none; 
+	display: inline-block;  
+	border-style: hidden; 
+	font-family: sans-serif;
+	cursor: pointer;
+	position: absolute;
+	left: 5000000px;
+	z-index: 100000;
+}
+
+#arrive-4-at-start
+{
+		width: 10px;
+    height: 10px;
+    background: white;
+    position: absolute;
+    left: 1px;
+}
+
+#scroll-restart
+{
+		background-color: transparent; 
+	color: black; 
+	text-decoration: none; 
+	display: inline-block; 
+	background: transparent;
+	border-style: hidden; 
+	font-family: sans-serif;
+	cursor: pointer;
+	position: absolute;
+	height: 15px;
+	width: 5000000px;
+}
+
+#arrive-5-at-start
+{
+			width: 10px;
+    height: 10px;
+    background: transparent;
+    position: relative;
+    left: 1px;
+}
+
+
+
