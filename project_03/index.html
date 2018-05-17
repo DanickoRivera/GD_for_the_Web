@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="utf-8" />
+<link href="private_style.css" rel="stylesheet" type="text/css" >
+	<title>Project 3</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+<script>
+		$(document).ready(function(){
+    	$("#hover").mouseenter(function(){
+        $("#portrait_hover").fadeOut()
+    	});
+	    $("#hover").mouseleave(function(){
+        $("#portrait_hover").fadeIn();
+ 
+		});
+   
+		});
+	</script>
+	
+<script>
+		$(document).ready(function(){
+    	$("#portrait_hover").mouseenter(function(){
+        $("#hover").fadeOut()
+    	});
+	    $("#portrait_hover").mouseleave(function(){
+        $("#hover").fadeIn();
+ 
+		});
+   
+		});
+	</script>
+	
+<script>
+		$(document).ready(function(){
+    	$("#portrait_hover").mouseenter(function(){
+        $("#landscape_hover").fadeOut()
+    	});
+	    $("#portrait_hover").mouseleave(function(){
+        $("#landscape_hover").fadeIn();
+ 
+		});
+   		
+		});
+	</script>
+	
+<script>
+		$(document).ready(function(){
+    	$("#hover").mouseenter(function(){
+        $("#landscape_hover").fadeOut()
+    	});
+	    $("#hover").mouseleave(function(){
+        $("#landscape_hover").fadeIn();
+ 
+		});
+   		
+		});
+	</script>
+	
+<script>
+		$(document).ready(function(){
+    	$("#landscape_hover").mouseenter(function(){
+        $("#hover").fadeOut()
+    	});
+	    $("#landscape_hover").mouseleave(function(){
+        $("#hover").fadeIn();
+ 
+		});
+   		
+		});
+	</script>
+	
+<script>
+		$(document).ready(function(){
+    	$("#landscape_hover").mouseenter(function(){
+        $("#portrait_hover").fadeOut()
+    	});
+	    $("#landscape_hover").mouseleave(function(){
+        $("#portrait_hover").fadeIn();
+ 
+		});
+   		
+		});
+	</script>
+	
+	
+	
+	
+	
+	
+</head>
+<body>
+
+<header>
+	
+	<h1 style="position: absolute; left: 100px; color:dodgerblue; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">
+	COMMUNITY CONTENT</h1>
+	
+	<div id="page_icon"></div>	
+
+	<a class="button" href="#popup1">ABOUT</a>
+
+
+<div id="popup1" class="overlay">
+	<div class="popup">
+		<h2>GATHERING DATA</h2>
+		<a class="close" href="#">&times;</a>
+		<div class="content"><p>All the compositions featured in this page have been created by data collected from groups off of the FaceBook platform. Through unsuspecting social media behavior, I was able to collect enough personal data from eager to share users and create some memorable compositions.</p>
+ </div>
+	</div>
+</div>
+	
+	
+	
+</header>
+	
+<section>
+	
+	
+  <div id="hover"><img  src="images/bird_post.png" width="200" height="288" alt=""/> </div>
+
+	
+  <div class="stuff"><img style="z-index: 4; position: absolute; top: 100px;" src="images/bird-selfie-collage.png" width="1280" height="1500" alt=""/></div>
+	
+	
+  <div id="portrait_hover"><img src="images/portrat-post.png" width="200" height="287" alt=""/></div> 
+	
+ 
+  <div class="stuff2"><img style="z-index: 3; position: absolute; top: 100px;" src="images/portrait_exhibition.png" width="1280" height="1500" alt=""/></div>
+
+
+  <div id="landscape_hover"><img src="images/landscape-post.png" width="200" height="290" alt=""/></div> 
+	
+	
+  <div class="stuff3"><img style="z-index: 1; position: absolute; top: 100px;" src="images/landscape_collage.png" width="1280" height="1500" alt=""/></div>
+  
+	
+	
+</section>
+
+
+
+</body>
+</html>
